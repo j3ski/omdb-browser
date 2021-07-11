@@ -3,7 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import { useSelector } from "react-redux";
 
 import { getById } from "../services/movie/actions";
-import { getDetailsById } from "../services/selectors";
+import { getDetailsById } from "../services/movie/selectors";
 import { getStore, saveInitialState, Store } from "../store";
 import { waitOnServer } from "../utils/env";
 

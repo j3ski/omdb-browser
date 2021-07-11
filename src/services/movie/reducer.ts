@@ -25,6 +25,7 @@ export default createReducer(initialState, (builder) => {
   // LIST ACTIONS
   builder.addCase(actions.search.pending, (state) => ({
     ...state,
+    error: null,
     searching: true,
   }));
   builder.addCase(actions.search.fulfilled, (state, { payload, meta }) => ({
@@ -34,15 +35,16 @@ export default createReducer(initialState, (builder) => {
     list: meta.arg.page ? [...state.list, ...payload.Search] : payload.Search,
     total: parseInt(payload.totalResults),
   }));
-  builder.addCase(actions.search.rejected, (state, { payload }) => ({
+  builder.addCase(actions.search.rejected, (state, { error }) => ({
     ...state,
     searching: false,
-    error: payload as Error,
+    error: error as Error,
   }));
 
   // GET BY ID ACTIONS
   builder.addCase(actions.getById.pending, (state) => ({
     ...state,
+    error: null,
     fetching: true,
   }));
 

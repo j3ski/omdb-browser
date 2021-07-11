@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-import type { State } from "../store";
-import { NAME } from "./movie/const";
+import type { State } from "../../store";
+import { NAME } from "./const";
 
 const getState = (state: State) => state[NAME];
 
