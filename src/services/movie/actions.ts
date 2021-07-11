@@ -9,5 +9,5 @@ export const search = createAsyncThunk(
 );
 
 export const getById = createAsyncThunk("movie/GET_BY_ID", (id: string) =>
-  query({ i: id, type: "movie" })
+  query({ i: id, type: "movie", plot: "full" })
 );

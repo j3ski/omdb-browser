@@ -5,7 +5,7 @@ const AppLayout = styled.div`
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  padding: 16px;
+  padding: 16px 16px 0;
 `;
 
 export default AppLayout;

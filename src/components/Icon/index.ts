@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 
-type Name = "search" | "sync";
+type Name = "search" | "sync" | "back";
 
 const rotate = keyframes`
 0% {
