@@ -7,9 +7,10 @@ interface Props {
   value: string;
   onChange: (newValue: string) => void;
   debounce?: number;
+  loading?: boolean;
 }
 
-const MovieSearch: FC<Props> = ({ value, onChange, debounce }) => {
+const MovieSearch: FC<Props> = ({ value, onChange, debounce, loading }) => {
   const [localValue, setLocalValue] = useState(value);
 
   const handleChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
@@ -32,9 +33,9 @@ const MovieSearch: FC<Props> = ({ value, onChange, debounce }) => {
       value={localValue}
       placeholder="Start typing to search..."
       onChange={handleChange}
-    >
-      <Icon $name="search" />
-    </Input>
+      left={<Icon $name="search" />}
+      right={loading ? <Icon $name="sync" $rotate /> : null}
+    />
   );
 };
 

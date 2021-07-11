@@ -1,14 +1,21 @@
-import { FC, InputHTMLAttributes } from "react";
+import { FC, InputHTMLAttributes, ReactNode } from "react";
 
 import * as S from "./Input.styled";
 
-const Input: FC<InputHTMLAttributes<HTMLInputElement>> = ({
-  children,
+interface Props {
+  left?: ReactNode;
+  right?: ReactNode;
+}
+
+const Input: FC<InputHTMLAttributes<HTMLInputElement> & Props> = ({
+  left,
+  right,
   ...inputProps
 }) => (
   <S.Wrapper>
-    {children}
+    {left}
     <S.Input {...inputProps} />
+    {right}
   </S.Wrapper>
 );
 

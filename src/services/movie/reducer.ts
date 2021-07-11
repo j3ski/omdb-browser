@@ -39,6 +39,8 @@ export default createReducer(initialState, (builder) => {
     ...state,
     searching: false,
     error: error as Error,
+    list: [],
+    total: 0,
   }));
 
   // GET BY ID ACTIONS
@@ -57,9 +59,9 @@ export default createReducer(initialState, (builder) => {
       [payload.imdbID]: payload,
     },
   }));
-  builder.addCase(actions.getById.rejected, (state, { payload }) => ({
+  builder.addCase(actions.getById.rejected, (state, { error }) => ({
     ...state,
     fetching: false,
-    error: payload as Error,
+    error: error as Error,
   }));
 });

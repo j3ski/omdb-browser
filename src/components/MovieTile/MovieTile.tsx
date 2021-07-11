@@ -11,7 +11,12 @@ const MovieTile: FC<Props> = ({ movie }) => (
   <S.TileWrapper>
     <S.Poster>
       {movie.Poster !== "N/A" && (
-        <Image src={movie.Poster} layout="fill" alt={`${movie.Title} poster`} />
+        <Image
+          src={movie.Poster}
+          layout="fill"
+          alt={`${movie.Title} poster`}
+          objectFit="contain"
+        />
       )}
     </S.Poster>
     <S.Title title={movie.Title}>{movie.Title}</S.Title>
