@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 import type { State } from "../../store";
+import { IByIdOrTitleResponse } from "./api/types";
 import { NAME } from "./const";
 
 const getState = (state: State) => state[NAME];
@@ -21,7 +22,9 @@ export const getDetailsById = createSelector(
   getState,
   (_: State, id: string) => id,
   ({ list, detailsById }, id) =>
-    detailsById[id] || list.find((item) => item.imdbID === id) || null
+    (detailsById[id] ||
+      list.find((item) => item.imdbID === id) ||
+      null) as IByIdOrTitleResponse
 );
 
 export const getFetchingDetails = createSelector(

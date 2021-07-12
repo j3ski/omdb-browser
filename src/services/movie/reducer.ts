@@ -3,10 +3,10 @@ import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "./actions";
 import { IByIdOrTitleResponse, IBySearchResponse } from "./api/types";
 
-interface State {
+export interface State {
   searching: boolean;
   fetching: boolean;
-  error: Error | null;
+  error: string | null;
   list: IBySearchResponse["Search"];
   total: number;
   detailsById: Record<string, IByIdOrTitleResponse>;
@@ -38,7 +38,7 @@ export default createReducer(initialState, (builder) => {
   builder.addCase(actions.search.rejected, (state, { error }) => ({
     ...state,
     searching: false,
-    error: error as Error,
+    error: error.message,
     list: [],
     total: 0,
   }));
@@ -62,6 +62,6 @@ export default createReducer(initialState, (builder) => {
   builder.addCase(actions.getById.rejected, (state, { error }) => ({
     ...state,
     fetching: false,
-    error: error as Error,
+    error: error.message,
   }));
 });

@@ -27,13 +27,13 @@ const MovieList: FC = () => {
         <MovieSearch
           value={search}
           onChange={setSearch}
-          debounce={250}
+          debounce={300}
           loading={loading}
         />
       </S.SearchWrapper>
       <S.ListWrapper {...bind}>
         {error ? (
-          <S.ErrorMessage>{error.message}</S.ErrorMessage>
+          <S.ErrorMessage>{error}</S.ErrorMessage>
         ) : (
           <S.List>
             {list.items.map((item) => (
