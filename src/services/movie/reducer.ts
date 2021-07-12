@@ -10,6 +10,7 @@ export interface State {
   list: IBySearchResponse["Search"];
   total: number;
   detailsById: Record<string, IByIdOrTitleResponse>;
+  lastSearchRequest: string;
 }
 
 const initialState: State = {
@@ -19,22 +20,30 @@ const initialState: State = {
   list: [],
   total: 0,
   detailsById: {},
+  lastSearchRequest: "",
 };
 
 export default createReducer(initialState, (builder) => {
   // LIST ACTIONS
-  builder.addCase(actions.search.pending, (state) => ({
+  builder.addCase(actions.search.pending, (state, { meta }) => ({
     ...state,
     error: null,
     searching: true,
+    lastSearchRequest: meta.requestId,
   }));
-  builder.addCase(actions.search.fulfilled, (state, { payload, meta }) => ({
-    ...state,
-    error: null,
-    searching: false,
-    list: meta.arg.page ? [...state.list, ...payload.Search] : payload.Search,
-    total: parseInt(payload.totalResults),
-  }));
+  builder.addCase(actions.search.fulfilled, (state, { payload, meta }) => {
+    // this is not the request we are waiting for
+    if (state.lastSearchRequest !== meta.requestId) {
+      return state;
+    }
+    return {
+      ...state,
+      error: null,
+      searching: false,
+      list: meta.arg.page ? [...state.list, ...payload.Search] : payload.Search,
+      total: parseInt(payload.totalResults),
+    };
+  });
   builder.addCase(actions.search.rejected, (state, { error }) => ({
     ...state,
     searching: false,

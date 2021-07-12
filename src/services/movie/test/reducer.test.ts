@@ -17,6 +17,7 @@ describe("movie service", () => {
         list: [],
         total: 0,
         detailsById: {},
+        lastSearchRequest: "",
       };
     });
 
@@ -109,6 +110,27 @@ describe("movie service", () => {
           total: 10,
           list: [...stateMock.list, ...resultMock.Search],
         });
+      });
+
+      it("should ignore the response if the request id is different than the current one", () => {
+        stateMock.searching = true;
+        stateMock.list = [
+          {
+            Title: "example2",
+            Type: "movie",
+            Year: "2022",
+            imdbID: "id2",
+            Poster: "posterUrl2",
+          },
+        ];
+        stateMock.lastSearchRequest = "requestId";
+
+        const endState = reducer(
+          stateMock,
+          actions.search.fulfilled(resultMock, "other requestId", { page: 1 })
+        );
+
+        expect(endState).toEqual(stateMock);
       });
     });
 
