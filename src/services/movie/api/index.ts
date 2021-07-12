@@ -8,7 +8,7 @@ import type {
   IByTitleParams,
   IErrorResponse,
 } from "./types";
-const BASE_URL = "http://www.omdbapi.com/";
+const BASE_URL = "https://www.omdbapi.com/";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY!;
 

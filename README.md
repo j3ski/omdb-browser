@@ -16,6 +16,10 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 
 Run `yarn test` or `yarn test --watch`
 
+## Live Demo
+
+Demo available [here](https://omdb-browser-6ejguioqo-j3ski.vercel.app/).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

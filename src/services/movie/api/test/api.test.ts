@@ -24,7 +24,7 @@ describe("movie service", () => {
       await api.query({ i: "mock id" });
 
       expect(mockFetch).toBeCalledWith(
-        "http://www.omdbapi.com/?apikey=testkey&i=mock+id"
+        "https://www.omdbapi.com/?apikey=testkey&i=mock+id"
       );
     });
 
