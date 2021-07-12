@@ -29,6 +29,7 @@ export const BackButton = styled(Icon).attrs({ as: "button", $name: "back" })`
 
 export const Poster = styled.div`
   width: 100%;
+  margin: 0 auto;
   padding-top: 100%;
   max-width: 400px;
   position: relative;
