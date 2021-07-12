@@ -38,7 +38,7 @@ export default createReducer(initialState, (builder) => {
   builder.addCase(actions.search.rejected, (state, { error }) => ({
     ...state,
     searching: false,
-    error: error.message,
+    error: error.message!,
     list: [],
     total: 0,
   }));
@@ -62,6 +62,6 @@ export default createReducer(initialState, (builder) => {
   builder.addCase(actions.getById.rejected, (state, { error }) => ({
     ...state,
     fetching: false,
-    error: error.message,
+    error: error.message!,
   }));
 });

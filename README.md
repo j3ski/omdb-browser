@@ -12,6 +12,10 @@ yarn dev
 
 Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
 
+## Testing
+
+Run `yarn test` or `yarn test --watch`
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
