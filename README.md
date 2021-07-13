@@ -18,7 +18,7 @@ Run `yarn test` or `yarn test --watch`
 
 ## Live Demo
 
-Demo available [here](https://omdb-browser-6ejguioqo-j3ski.vercel.app/).
+Demo available [here](https://omdb-browser-phi.vercel.app/).
 
 ## Learn More
 

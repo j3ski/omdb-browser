@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { useMemo } from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
@@ -15,14 +16,22 @@ const App = ({
   const store = useMemo(() => getStore(initialState), [initialState]);
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <AppLayout>
-          <Component {...pageProps} />
-        </AppLayout>
-      </ThemeProvider>
-    </Provider>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1,user-scalable=no"
+        />
+      </Head>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </ThemeProvider>
+      </Provider>
+    </>
   );
 };
 
